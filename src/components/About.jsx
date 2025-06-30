@@ -65,7 +65,7 @@ const About = () => {
         className="absolute left-6 sm:left-10 top-4 sm:top-6 text-dark text-base sm:text-xl font-[Caveat,cursive] rotate-[-7deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Nouveau !
@@ -74,7 +74,7 @@ const About = () => {
         className="absolute right-6 sm:right-8 top-1/3 text-bleu text-lg sm:text-2xl font-[Caveat,cursive] rotate-[8deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Testé & approuvé
@@ -83,7 +83,7 @@ const About = () => {
         className="absolute left-1/4 bottom-4 sm:bottom-8 text-dark text-base sm:text-xl font-[Caveat,cursive] rotate-[-10deg] pointer-events-none select-none"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Clique ici !
@@ -94,14 +94,14 @@ const About = () => {
           className="text-center mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           <motion.h2 
             className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-dark mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             À propos de <span className="text-bleu">moi</span>
@@ -110,7 +110,7 @@ const About = () => {
             className="text-sm sm:text-base md:text-xl text-dark/70 max-w-full sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Passionné par la technologie et le design, je combine créativité et expertise technique pour créer des expériences digitales exceptionnelles.
@@ -123,7 +123,7 @@ const About = () => {
             className="relative"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             <div className="relative w-full max-w-md mx-auto">
@@ -141,14 +141,14 @@ const About = () => {
             className="space-y-6 sm:space-y-8"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             <motion.h3 
               className="text-xl sm:text-3xl font-bold text-dark"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               Mon parcours
@@ -158,7 +158,7 @@ const About = () => {
               className="space-y-4 sm:space-y-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <p className="text-sm sm:text-base text-dark/80 leading-relaxed">
@@ -173,7 +173,7 @@ const About = () => {
               className="grid grid-cols-2 gap-4 sm:gap-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <div className="text-center p-4 sm:p-6 bg-white rounded-2xl shadow-md">
@@ -191,7 +191,7 @@ const About = () => {
               className="bg-bleu hover:bg-[#ff767a] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow transition-all duration-200 text-sm sm:text-base"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               Me contacter
@@ -204,14 +204,14 @@ const About = () => {
           className="mt-16 sm:mt-24"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           <motion.h3 
             className="text-2xl sm:text-4xl font-bold text-dark text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Mes <span className="text-bleu">Compétences</span>
@@ -223,7 +223,7 @@ const About = () => {
               className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-md"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <h4 className="text-lg sm:text-2xl font-bold text-dark mb-6 sm:mb-8 text-center">Langages de programmation</h4>
@@ -234,7 +234,7 @@ const About = () => {
                     className="space-y-2"
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 + index * 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     viewport={{ once: false }}
                   >
                     <div className="flex justify-between items-center">
@@ -246,7 +246,7 @@ const About = () => {
                         className="bg-gradient-to-r from-bleu to-[#ff767a] h-2 sm:h-3 rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.percentage}%` }}
-                        transition={{ duration: 1.5, delay: 0.8 + index * 0.1, ease: "easeOut" }}
+                        transition={{ duration: 1, ease: "easeOut" }}
                         viewport={{ once: false }}
                       />
                     </div>
@@ -260,7 +260,7 @@ const About = () => {
               className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-md"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <h4 className="text-lg sm:text-2xl font-bold text-dark mb-6 sm:mb-8 text-center">Outils de design</h4>
@@ -271,7 +271,7 @@ const About = () => {
                     className="space-y-2"
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 + index * 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     viewport={{ once: false }}
                   >
                     <div className="flex justify-between items-center">
@@ -283,7 +283,7 @@ const About = () => {
                         className="bg-gradient-to-r from-[#ff767a] to-bleu h-2 sm:h-3 rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${tool.percentage}%` }}
-                        transition={{ duration: 1.5, delay: 0.8 + index * 0.1, ease: "easeOut" }}
+                        transition={{ duration: 1, ease: "easeOut" }}
                         viewport={{ once: false }}
                       />
                     </div>

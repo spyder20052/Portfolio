@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
+import emailjs from 'emailjs-com';
+import { toast } from './ui/use-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,35 +21,59 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ici tu pourras brancher ton backend ou service d'email
-    alert('Message envoyé ! (simulation)');
+    emailjs.send(
+      'service_gng2y07',
+      'template_5hroqmo',
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'kspynel@gmail.com',
+      },
+      'ijknwo-iSK1lYmOlz'
+    )
+    .then((result) => {
+      toast({
+        title: 'Message envoyé !',
+        description: 'Merci pour votre message, je vous répondrai rapidement.',
+        variant: 'default',
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }, (error) => {
+      toast({
+        title: 'Erreur lors de l\'envoi',
+        description: 'Une erreur est survenue. Veuillez réessayer.',
+        variant: 'destructive',
+      });
+    });
   };
 
   const contactInfo = [
     {
       icon: Mail,
       title: 'Email',
-      value: 'contact@portfolio.com',
+      value: 'kspynel@gmail.com',
       description: 'Envoyez-moi un email'
     },
     {
       icon: Phone,
-      title: 'Téléphone',
-      value: '+33 1 23 45 67 89',
-      description: 'Appelez-moi directement'
+      title: 'WhatsApp',
+      value: '+229 01 43 20 22 39',
+      description: 'Ecrivez-moi directement'
     },
     {
       icon: MapPin,
       title: 'Localisation',
-      value: 'Paris, France',
+      value: 'Cotonou, Bénin',
       description: 'Rencontrons-nous'
     }
   ];
 
   const socialLinks = [
-    { icon: Github, name: 'GitHub', url: '#' },
-    { icon: Linkedin, name: 'LinkedIn', url: '#' },
-    { icon: Twitter, name: 'Twitter', url: '#' }
+    { icon: Github, name: 'GitHub', url: 'https://github.com/spyder20052' },
+    { icon: Linkedin, name: 'LinkedIn', url: 'https://www.linkedin.com/in/spynel-kouton-756444273/' },
+    { icon: Instagram, name: 'Instagram', url: 'https://www.instagram.com/spynelstudio?igsh=MWdycDFoNDc2ZHBtYQ%3D%3D&utm_source=qr' }
   ];
 
   return (
@@ -93,7 +119,7 @@ const Contact = () => {
         className="absolute left-4 sm:left-8 top-4 sm:top-8 text-bleu text-lg sm:text-2xl font-[Caveat,cursive] rotate-[-8deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Contacte-moi !
@@ -102,7 +128,7 @@ const Contact = () => {
         className="absolute right-6 sm:right-10 top-1/2 text-dark text-base sm:text-xl font-[Caveat,cursive] rotate-[10deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         C'est gratuit
@@ -111,7 +137,7 @@ const Contact = () => {
         className="absolute left-1/2 bottom-4 sm:bottom-8 -translate-x-1/2 text-bleu text-base sm:text-xl font-[Caveat,cursive] rotate-[-6deg] pointer-events-none select-none"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Réponse rapide
@@ -122,14 +148,14 @@ const Contact = () => {
           className="text-center mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           <motion.h2 
             className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-dark mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Contactez-<span className="text-bleu">moi</span>
@@ -138,7 +164,7 @@ const Contact = () => {
             className="text-sm sm:text-base md:text-xl text-dark/70 max-w-full sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Vous avez un projet en tête ? Une question ? N'hésitez pas à me contacter. Je serais ravi de discuter de vos idées et de voir comment nous pouvons travailler ensemble.
@@ -148,7 +174,7 @@ const Contact = () => {
           className="grid lg:grid-cols-2 gap-6 sm:gap-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           {/* Contact Info & Socials */}
@@ -156,14 +182,14 @@ const Contact = () => {
             className="space-y-4 sm:space-y-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             <motion.div 
               className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-md"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 text-bleu">Informations de contact</h3>
@@ -174,7 +200,7 @@ const Contact = () => {
                     className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl hover:bg-sand/60 transition-colors duration-200"
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     viewport={{ once: false }}
                   >
                     <div className="flex-shrink-0">
@@ -196,7 +222,7 @@ const Contact = () => {
               className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-md"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 text-bleu">Suivez-moi</h3>
@@ -211,7 +237,7 @@ const Contact = () => {
                     aria-label={social.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 1.2 + index * 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     viewport={{ once: false }}
                   >
                     <social.icon size={20} className="sm:w-6 sm:h-6" />
@@ -224,7 +250,7 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             <motion.form 
@@ -232,7 +258,7 @@ const Contact = () => {
               className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-md space-y-4 sm:space-y-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 text-bleu">Envoyez-moi un message</h3>
@@ -295,7 +321,7 @@ const Contact = () => {
                 className="w-full bg-bleu hover:bg-[#ff767a] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow transition-all duration-200 text-sm sm:text-lg"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 viewport={{ once: false }}
               >
                 Envoyer le message

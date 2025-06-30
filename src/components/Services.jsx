@@ -89,7 +89,7 @@ const Services = () => {
         className="absolute left-6 sm:left-10 top-4 sm:top-6 text-dark text-base sm:text-xl font-[Caveat,cursive] rotate-[-7deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Nouveau !
@@ -98,7 +98,7 @@ const Services = () => {
         className="absolute right-6 sm:right-8 top-1/3 text-bleu text-lg sm:text-2xl font-[Caveat,cursive] rotate-[8deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Testé & approuvé
@@ -107,7 +107,7 @@ const Services = () => {
         className="absolute left-1/4 bottom-4 sm:bottom-8 text-dark text-base sm:text-xl font-[Caveat,cursive] rotate-[-10deg] pointer-events-none select-none"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Clique ici !
@@ -118,14 +118,14 @@ const Services = () => {
           className="text-center mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           <motion.h2 
             className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-dark mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Mes <span className="text-bleu">Services</span>
@@ -134,7 +134,7 @@ const Services = () => {
             className="text-sm sm:text-base md:text-xl text-dark/70 max-w-full sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Des solutions complètes pour transformer vos idées en réalité digitale. De la conception à la mise en ligne, je vous accompagne à chaque étape.
@@ -144,7 +144,7 @@ const Services = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           {services.map((service, index) => (
@@ -153,7 +153,7 @@ const Services = () => {
               className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-md hover:shadow-lg transition-all group"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-bleu/10 rounded-xl sm:rounded-2xl mb-4 sm:mb-6">

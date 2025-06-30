@@ -15,7 +15,6 @@ const Portfolio = () => {
     { id: 'all', name: 'Tous' },
     { id: 'web', name: 'Web' },
     { id: 'mobile', name: 'Mobile' },
-    { id: 'design', name: 'Design' },
     { id: 'affiche', name: 'Affiche' }
   ];
 
@@ -311,7 +310,7 @@ const Portfolio = () => {
         className="absolute left-4 sm:left-8 top-6 sm:top-10 text-bleu text-lg sm:text-2xl font-[Caveat,cursive] rotate-[-8deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Mon préféré
@@ -320,7 +319,7 @@ const Portfolio = () => {
         className="absolute right-6 sm:right-10 top-1/2 text-dark text-base sm:text-xl font-[Caveat,cursive] rotate-[7deg] pointer-events-none select-none"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         À découvrir !
@@ -329,7 +328,7 @@ const Portfolio = () => {
         className="absolute left-1/2 bottom-4 sm:bottom-8 -translate-x-1/2 text-bleu text-base sm:text-xl font-[Caveat,cursive] rotate-[-8deg] pointer-events-none select-none"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: false }}
       >
         Scroll pour voir plus
@@ -340,14 +339,14 @@ const Portfolio = () => {
           className="text-center mb-8 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           <motion.h2 
             className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-dark mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Mon <span className="text-bleu">Portfolio</span>
@@ -356,7 +355,7 @@ const Portfolio = () => {
             className="text-sm sm:text-base md:text-xl text-dark/70 max-w-full sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             viewport={{ once: false }}
           >
             Découvrez une sélection de mes projets les plus récents et les plus innovants. Chaque projet raconte une histoire unique de créativité et d'excellence technique.
@@ -367,7 +366,7 @@ const Portfolio = () => {
           className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           {categories.map((category) => (
@@ -390,7 +389,7 @@ const Portfolio = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
         >
           {filteredProjects.map((project, index) => (
@@ -399,7 +398,7 @@ const Portfolio = () => {
               className="bg-white rounded-2xl sm:rounded-3xl shadow-md hover:shadow-lg transition-all overflow-hidden flex flex-col"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               viewport={{ once: false }}
             >
               <div className="relative overflow-hidden group">
@@ -426,7 +425,7 @@ const Portfolio = () => {
                       <Github size={16} className="sm:w-5 sm:h-5" />
                     </button>
                   )}
-                  {project.category === 'design' || project.category === 'web' && project.figma && (
+                  {project.category === 'web' && project.figma && (
                     <button
                       className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
                       aria-label="Voir le projet sur Figma"

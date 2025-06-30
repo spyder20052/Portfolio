@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, ArrowUp, Github, Linkedin, Mail, MapPin, Phone, Code } from 'lucide-react';
+import { Heart, ArrowUp, Github, Linkedin, Mail, MapPin, Phone, Code, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -24,7 +24,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, name: 'GitHub', color: 'hover:text-bleu' },
     { icon: Linkedin, name: 'LinkedIn', color: 'hover:text-bleu' },
-    { icon: Mail, name: 'Email', color: 'hover:text-bleu' }
+    { icon: Instagram, name: 'Instagram', color: 'hover:text-bleu' }
   ];
 
   const scrollToSection = (href) => {
