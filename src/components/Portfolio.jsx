@@ -1,71 +1,172 @@
 import React, { useState } from 'react';
-import { Eye, Github, ExternalLink } from 'lucide-react';
+import { Eye, Github, ExternalLink, Figma } from 'lucide-react';
 import { motion } from 'framer-motion';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
 
   const categories = [
     { id: 'all', name: 'Tous' },
     { id: 'web', name: 'Web' },
     { id: 'mobile', name: 'Mobile' },
-    { id: 'design', name: 'Design' }
+    { id: 'design', name: 'Design' },
+    { id: 'affiche', name: 'Affiche' }
   ];
 
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Moderne',
-      description: 'Plateforme e-commerce complète avec paiement intégré et gestion des stocks.',
+      title: 'ArbitraChain',
+      description: 'Il s\'agit d\'une plateforme en ligne pour automatiser l\'arbitrage en ligne fonctionnant grace à l\'ia',
       category: 'web',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
-      technologies: ['React', 'Node.js', 'Stripe', 'MongoDB'],
-      featured: true
+      image: 'Arbitra/Sign-dark.png',
+      technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
+      featured: true,
+      github: 'https://arbitrachain.com/',
+      figma: 'https://www.figma.com/proto/b8TkVP7lMw4LAY9gOsnQi2/ArbitraChain?node-id=31-2&t=fgSWQafFTUAIM2VK-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=31%3A2',
+      external: 'https://arbitrachain.com/',
+      gallery: [
+        'Arbitra/Accueil.png',
+        'Arbitra/Log-dark.png',
+        'Arbitra/Tarif.png',
+        'Arbitra/Newsletter.png',
+        'Arbitra/Sign-dark.png',
+        'Arbitra/Dash-dark.png',
+        'Arbitra/Contact.png',
+        'Arbitra/type.png'
+      ]
     },
     {
       id: 2,
-      title: 'App Mobile Fitness',
-      description: 'Application mobile de fitness avec suivi des performances et coaching personnalisé.',
-      category: 'mobile',
-      image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-      technologies: ['React Native', 'Firebase', 'Redux', 'Charts'],
-      featured: true
+      title: 'Crispy',
+      description: 'Site de restauration destiné à une marque de Fast-Food Crispy pour gerer ses ventes en ligne',
+      category: 'web',
+      image: 'Crispy/crispy.png',
+      technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
+      featured: true,
+      figma: 'https://www.figma.com/proto/xSiBjZ3JN99ihmTEbOb0z4/resto?node-id=6-174&t=Yed49kabdS1fRalB-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+      external: 'https://app-mobile-fitness.com',
+      gallery: [
+        'Crispy/Desktop1.png',
+        'Crispy/Desktop2.png',
+        'Crispy/Desktop3.png'
+      ]
     },
     {
       id: 3,
-      title: 'Dashboard Analytics',
-      description: "Interface d'administration avec visualisation de données en temps réel.",
+      title: 'NextGen',
+      description: "Landing Page d'un projet personnel que je me suis amusé à faire sur figma pour me familiariser avec le prototypage",
       category: 'web',
-      image: 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5',
-      technologies: ['Vue.js', 'D3.js', 'Express', 'PostgreSQL'],
-      featured: false
+      image: 'NextGen/4.png',
+      technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
+      featured: true,
+      figma: 'https://www.figma.com/proto/Dud3EhOiK2vT00HF5B7qNS/Untitled?node-id=45-939&t=Yed49kabdS1fRalB-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+      external: 'https://app-mobile-fitness.com',
+      gallery: [
+        'NextGen/1.png',
+        'NextGen/2.png',
+        'NextGen/3.png',
+        'NextGen/4.png',
+        'NextGen/5.png'
+      ]
     },
     {
       id: 4,
-      title: 'Brand Identity',
-      description: 'Identité visuelle complète pour une startup technologique innovante.',
-      category: 'design',
-      image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca',
+      title: 'Portfolio\'s Feller',
+      description: 'Maquette figma du portfolio d\'un expert en cybersécurité',
+      category: 'web',
+      image: 'Feller/portfolio.png',
       technologies: ['Figma', 'Illustrator', 'Photoshop', 'Branding'],
-      featured: false
+      featured: false,
+      figma: 'https://www.figma.com/proto/g9GDjXwHXcm5GZ2OgAkvLY/Portfolio-Feller?node-id=10-2&t=KY4dffIM1YGICvuh-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+      gallery: [
+        'Feller/portfolio.png'
+      ]
     },
     {
       id: 5,
-      title: 'Portfolio Créatif',
-      description: 'Site portfolio pour un photographe avec galerie interactive.',
+      title: 'Astro',
+      description: 'Site web pour une startup de developpement web',
       category: 'web',
-      image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99',
-      technologies: ['Next.js', 'Framer Motion', 'Sanity', 'Vercel'],
-      featured: true
+      image: 'Astro/home.png',
+      technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
+      featured: false,
+      figma: 'https://www.figma.com/proto/Dud3EhOiK2vT00HF5B7qNS/Untitled?node-id=10-497&t=Yed49kabdS1fRalB-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
+      gallery: [
+        'Astro/home.png'
+      ]
     },
     {
       id: 6,
-      title: 'App de Méditation',
-      description: 'Application mobile de méditation avec sons relaxants et programmes guidés.',
-      category: 'mobile',
-      image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429',
-      technologies: ['Flutter', 'Dart', 'Audio', 'Animations'],
-      featured: false
+      title: 'Zitawi',
+      description: 'J\'ai réaliser une refonte total du menu du FastFood Zitawi pour rendre leur menu plus gourmand',
+      category: 'affiche',
+      image: 'File/1.jpg',
+      technologies: ['Figma', 'Canva', 'Pinterest'],
+      featured: false,
+      gallery: [
+        'File/1.jpg',
+        'File/2.jpg',
+        'File/3.jpg',
+        'File/4.jpg'
+      ]
+    },
+    {
+      id: 7,
+      title: 'Future Studio',
+      description: 'J\'ai réaliser des logos engagants pour le Future Studio leader de l\'innovation autour de la tech au Bénin',
+      category: 'affiche',
+      image: 'File/1.png',
+      technologies: ['Figma', 'Colors', 'Canva', 'Branding'],
+      featured: false,
+      gallery: [
+        'File/1.png',
+        'File/2.png',
+        'File/3.png',
+        'File/4.png',
+        'File/5.png'
+      ]
+    },
+    {
+      id: 8,
+      title: 'Snaki',
+      description: 'Affiche de présentation des bubbles tea de la marque snaki',
+      category: 'affiche',
+      image: 'File/bubble.jpeg',
+      technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
+      featured: false,
+      gallery: [
+        'File/bubble.jpeg',
+        'Snaki/1.png',
+        'Snaki/2.png',
+        'Snaki/3.png',
+        'Snaki/4.png',
+        'Snaki/5.png',
+        'Snaki/6.png',
+        'Snaki/7.png',
+        'Snaki/8.png',
+        'Snaki/9.png',
+        'Snaki/10.png',
+        'Snaki/11.png'
+      ]
+    },
+    {
+      id: 9,
+      title: 'Netflix',
+      description: 'J\'ai réaliser pour une entreprise de vente en ligne Lumora une affiche pour promouvoir son service de vente d\'abonnement Netflix',
+      category: 'affiche',
+      image: '/File/netflix.png',
+      technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
+      featured: false,
+      gallery: [
+        '/File/netflix.png'
+      ]
     }
   ];
 
@@ -73,8 +174,81 @@ const Portfolio = () => {
     ? projects
     : projects.filter(project => project.category === selectedCategory);
 
+  const handleOpenGallery = (project) => {
+    setGalleryImages(project.gallery || []);
+    setGalleryIndex(0);
+    setGalleryOpen(true);
+  };
+
+  const handleCloseGallery = () => {
+    setGalleryOpen(false);
+    setGalleryImages([]);
+    setGalleryIndex(0);
+    setZoomed(false);
+  };
+
+  const handlePrevImage = () => {
+    setGalleryIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setGalleryIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleImageClick = () => {
+    setZoomed((z) => !z);
+  };
+
+  const handleDownloadGallery = async (project) => {
+    if (!project.gallery || project.gallery.length === 0) return;
+    const zip = new JSZip();
+    const folder = zip.folder(project.title.replace(/\s+/g, '_'));
+    // Téléchargement des images et ajout au zip
+    await Promise.all(
+      project.gallery.map(async (url, idx) => {
+        try {
+          const response = await fetch(url);
+          const blob = await response.blob();
+          const ext = blob.type.split('/')[1] || 'jpg';
+          folder.file(`image_${idx + 1}.${ext}`, blob);
+        } catch (e) {
+          // Ignore l'image si erreur
+        }
+      })
+    );
+    zip.generateAsync({ type: 'blob' }).then((content) => {
+      saveAs(content, `${project.title.replace(/\s+/g, '_')}_galerie.zip`);
+    });
+  };
+
   return (
     <section id="portfolio" className="py-12 sm:py-24 relative overflow-hidden" style={{ fontFamily: 'Montserrat, Arial, sans-serif' }}>
+      {/* Modale galerie d'images */}
+      {galleryOpen && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70">
+          <div className="relative bg-white rounded-2xl shadow-lg max-w-2xl w-full p-4 sm:p-8 flex flex-col items-center">
+            <button onClick={handleCloseGallery} className="absolute top-2 right-2 text-dark bg-sand rounded-full p-2 hover:bg-bleu hover:text-white transition-all">✕</button>
+            {galleryImages.length > 0 && (
+              <>
+                <div className="flex items-center justify-center w-full h-[60vh] mb-4">
+                  <img
+                    src={galleryImages[galleryIndex]}
+                    alt="Aperçu détaillé"
+                    className={`max-h-full w-auto rounded-xl shadow transition-transform duration-300 cursor-zoom-in ${zoomed ? 'scale-150 cursor-zoom-out z-10' : ''}`}
+                    style={{ objectFit: 'cover', objectPosition: 'top', transition: 'transform 0.3s' }}
+                    onClick={handleImageClick}
+                  />
+                </div>
+                <div className="flex items-center justify-center gap-4 mb-2">
+                  <button onClick={handlePrevImage} className="bg-sand text-dark rounded-full p-2 hover:bg-bleu hover:text-white transition-all">◀</button>
+                  <span className="text-dark/70 text-sm">{galleryIndex + 1} / {galleryImages.length}</span>
+                  <button onClick={handleNextImage} className="bg-sand text-dark rounded-full p-2 hover:bg-bleu hover:text-white transition-all">▶</button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
       {/* Background minimaliste Portfolio */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         {/* Formes créatives flottantes */}
@@ -230,7 +404,7 @@ const Portfolio = () => {
             >
               <div className="relative overflow-hidden group">
                 <img
-                  className="w-full h-48 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-48 sm:h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   alt={project.title}
                   src={project.image}
                 />
@@ -239,18 +413,32 @@ const Portfolio = () => {
                   <button
                     className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
                     aria-label="Voir le projet"
+                    onClick={() => handleOpenGallery(project)}
                   >
                     <Eye size={16} className="sm:w-5 sm:h-5" />
                   </button>
+                  {['web', 'mobile'].includes(project.category) && project.github && (
+                    <button
+                      className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
+                      aria-label="Voir le code sur GitHub"
+                      onClick={() => window.open(project.github, '_blank')}
+                    >
+                      <Github size={16} className="sm:w-5 sm:h-5" />
+                    </button>
+                  )}
+                  {project.category === 'design' || project.category === 'web' && project.figma && (
+                    <button
+                      className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
+                      aria-label="Voir le projet sur Figma"
+                      onClick={() => window.open(project.figma, '_blank')}
+                    >
+                      <Figma size={16} className="sm:w-5 sm:h-5" />
+                    </button>
+                  )}
                   <button
                     className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
-                    aria-label="Voir le code"
-                  >
-                    <Github size={16} className="sm:w-5 sm:h-5" />
-                  </button>
-                  <button
-                    className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
-                    aria-label="Lien externe"
+                    aria-label="Télécharger la galerie"
+                    onClick={() => handleDownloadGallery(project)}
                   >
                     <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                   </button>

@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <span className="text-xl sm:text-2xl font-extrabold text-dark mb-3 sm:mb-4 block">Portfolio</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-dark mb-3 sm:mb-4 block">Spynel KOUTON</span>
             <p className="text-xs sm:text-sm text-dark/70 mb-4 sm:mb-6 leading-relaxed">
               Créateur d'expériences digitales exceptionnelles. Passionné par l'innovation et la technologie, je transforme vos idées en réalité numérique.
             </p>
