@@ -115,7 +115,7 @@ const Footer = () => {
             <span>et beaucoup de café</span>
             <Code size={14} className="sm:w-4 sm:h-4 text-bleu" />
           </div>
-          <p>© 2024 Portfolio. Tous droits réservés.</p>
+          <p>© 2025 Portfolio. Tous droits réservés.</p>
           <button
             onClick={scrollToTop}
             className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-bleu hover:bg-[#ff767a] rounded-full text-white transition-all duration-200 shadow"
