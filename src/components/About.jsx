@@ -3,19 +3,19 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const programmingSkills = [
-    { name: 'HTML', percentage: 95 },
-    { name: 'CSS', percentage: 90 },
-    { name: 'Python', percentage: 85 },
-    { name: 'C', percentage: 80 },
-    { name: 'C++', percentage: 75 },
-    { name: 'Haskell', percentage: 70 }
+    { name: 'HTML', percentage: 70 },
+    { name: 'CSS', percentage: 70 },
+    { name: 'Python', percentage: 60 },
+    { name: 'C', percentage: 95 },
+    { name: 'C++', percentage: 95 },
+    { name: 'Haskell', percentage: 80 }
   ];
 
   const designTools = [
     { name: 'Figma', percentage: 90 },
     { name: 'Canva', percentage: 95 },
-    { name: 'Photoshop', percentage: 85 },
-    { name: 'Illustrator', percentage: 80 }
+    { name: 'Photoshop', percentage: 70 },
+    { name: 'Illustrator', percentage: 50 }
   ];
 
   return (

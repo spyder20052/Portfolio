@@ -7,38 +7,38 @@ const Services = () => {
     {
       icon: Monitor,
       title: 'Développement Web',
-      description: 'Sites web modernes et applications web performantes avec les dernières technologies.',
+      description: 'Création de sites web modernes et d\'applications web performantes, utilisant les technologies les plus récentes pour répondre à vos besoins.',
       features: ['React & Vue.js', 'Node.js & Express', 'Bases de données', 'API REST']
     },
     {
       icon: Smartphone,
       title: 'Applications Mobiles',
-      description: 'Applications mobiles natives et hybrides pour iOS et Android.',
+      description: 'Développement d\'applications mobiles natives et hybrides pour iOS et Android, afin de créer des expériences utilisateurs fluides et performantes.',
       features: ['React Native', 'Flutter', 'Progressive Web Apps', 'App Store Optimization']
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
-      description: 'Interfaces utilisateur intuitives et expériences utilisateur exceptionnelles.',
+      description: 'Conception d\'interfaces intuitives et d\'expériences utilisateur exceptionnelles, en mettant l\'accent sur l\'ergonomie et l\'accessibilité.',
       features: ['Design System', 'Prototypage', 'Tests utilisateurs', 'Accessibilité']
     },
     {
       icon: Zap,
       title: 'Optimisation Performance',
-      description: 'Amélioration des performances et de la vitesse de chargement.',
-      features: ['Core Web Vitals', 'Lazy Loading', 'Compression', 'CDN']
+      description: 'Amélioration des performances et de la vitesse de chargement de vos projets, pour garantir une expérience optimale à vos utilisateurs.',
+      features: ['Indicateurs de performance web', 'Chargement différé des contenus', 'Compression des fichiers', 'Réseau de distribution de contenu']
     },
     {
       icon: Search,
-      title: 'SEO & Marketing',
-      description: 'Optimisation pour les moteurs de recherche et stratégies marketing.',
+      title: 'Référencement SEO & Marketing',
+      description: 'Optimisation des moteurs de recherche et mise en place de stratégies marketing pour maximiser votre visibilité en ligne et vos conversions.',
       features: ['SEO Technique', 'Content Marketing', 'Analytics', 'Conversion']
     },
     {
       icon: Code2,
-      title: 'Consulting Tech',
-      description: 'Conseil en architecture technique et choix technologiques.',
-      features: ['Architecture', 'Code Review', 'Formation', 'Audit technique']
+      title: 'Gestion de Projets Digitaux',
+      description: 'Accompagnement dans la gestion et la réalisation de vos projets digitaux, de la conception à la livraison, en assurant la coordination et la réussite des étapes clés.',
+      features: ['Gestion de projets Agile', 'Planification stratégique', 'Suivi des délais et budget', 'Collaboration inter-équipes']
     }
   ];
 
