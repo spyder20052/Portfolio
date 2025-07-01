@@ -121,7 +121,7 @@ const Portfolio = () => {
       title: 'Future Studio',
       description: 'J\'ai réaliser des logos engagants pour le Future Studio leader de l\'innovation autour de la tech au Bénin',
       category: 'affiche',
-      image: 'File/1.webp',
+      image: 'File/1_.webp',
       technologies: ['Figma', 'Colors', 'Canva', 'Branding'],
       featured: false,
       gallery: [
