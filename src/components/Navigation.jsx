@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowDown } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +56,16 @@ const Navigation = () => {
               {item.name}
             </button>
           ))}
+          <a
+            href="/Cv/Spynel_KOUTON_cv_designer.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white border-2 border-[#595bc2] text-[#595bc2] hover:bg-[#595bc2] hover:text-white font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow transition-all duration-200 text-sm sm:text-base"
+            style={{ fontFamily: 'Montserrat, Arial, sans-serif' }}
+          >
+            <ArrowDown className="w-5 h-5" /> CV
+          </a>
           <button
             onClick={() => scrollToSection('#contact')}
             className="bg-bleu hover:bg-[#ff767a] text-white font-bold px-4 sm:px-6 py-2 rounded-full shadow transition-all duration-200 ml-2 text-sm sm:text-base"
@@ -85,6 +95,16 @@ const Navigation = () => {
               {item.name}
             </button>
           ))}
+          <a
+            href="/Cv/Spynel_KOUTON_cv_designer.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white border-2 border-[#595bc2] text-[#595bc2] hover:bg-[#595bc2] hover:text-white font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow transition-all duration-200 text-sm sm:text-base"
+            style={{ fontFamily: 'Montserrat, Arial, sans-serif' }}
+          >
+            <ArrowDown className="w-5 h-5" /> CV
+          </a>
           <button
             onClick={() => scrollToSection('#contact')}
             className="bg-bleu hover:bg-[#ff767a] text-white font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow transition-all duration-200 mt-2 text-sm sm:text-base"

@@ -81,6 +81,16 @@ const Hero = () => {
           >
             Voir mon travail
           </motion.button>
+          <a
+            href="/Cv/Spynel_KOUTON_cv_designer.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white border-2 border-[#595bc2] text-[#595bc2] hover:bg-[#595bc2] hover:text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow transition-all duration-200 text-base sm:text-lg mb-2"
+            style={{ fontFamily: 'Montserrat, Arial, sans-serif' }}
+          >
+            <ArrowDown className="w-5 h-5" /> Télécharger mon CV
+          </a>
         </motion.div>
       </div>
 
