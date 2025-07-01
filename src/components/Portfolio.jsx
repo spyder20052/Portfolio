@@ -24,21 +24,21 @@ const Portfolio = () => {
       title: 'ArbitraChain',
       description: 'Il s\'agit d\'une plateforme en ligne pour automatiser l\'arbitrage en ligne fonctionnant grace à l\'ia',
       category: 'web',
-      image: 'Arbitra/Sign-dark.png',
+      image: 'Arbitra/Sign-dark.webp',
       technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
       featured: true,
       github: 'https://arbitrachain.com/',
       figma: 'https://www.figma.com/proto/b8TkVP7lMw4LAY9gOsnQi2/ArbitraChain?node-id=31-2&t=fgSWQafFTUAIM2VK-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=31%3A2',
       external: 'https://arbitrachain.com/',
       gallery: [
-        'Arbitra/Accueil.png',
-        'Arbitra/Log-dark.png',
-        'Arbitra/Tarif.png',
-        'Arbitra/Newsletter.png',
-        'Arbitra/Sign-dark.png',
-        'Arbitra/Dash-dark.png',
-        'Arbitra/Contact.png',
-        'Arbitra/type.png'
+        'Arbitra/Accueil.webp',
+        'Arbitra/Log-dark.webp',
+        'Arbitra/Tarif.webp',
+        'Arbitra/Newsletter.webp',
+        'Arbitra/Sign-dark.webp',
+        'Arbitra/Dash-dark.webp',
+        'Arbitra/Contact.webp',
+        'Arbitra/type.webp'
       ]
     },
     {
@@ -46,15 +46,15 @@ const Portfolio = () => {
       title: 'Crispy',
       description: 'Site de restauration destiné à une marque de Fast-Food Crispy pour gerer ses ventes en ligne',
       category: 'web',
-      image: 'Crispy/crispy.png',
+      image: 'Crispy/crispy.webp',
       technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
       featured: true,
       figma: 'https://www.figma.com/proto/xSiBjZ3JN99ihmTEbOb0z4/resto?node-id=6-174&t=Yed49kabdS1fRalB-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
       external: 'https://app-mobile-fitness.com',
       gallery: [
-        'Crispy/Desktop1.png',
-        'Crispy/Desktop2.png',
-        'Crispy/Desktop3.png'
+        'Crispy/crispy.webp',
+        'Crispy/Desktop2.webp',
+        'Crispy/Desktop3.webp'
       ]
     },
     {
@@ -62,17 +62,17 @@ const Portfolio = () => {
       title: 'NextGen',
       description: "Landing Page d'un projet personnel que je me suis amusé à faire sur figma pour me familiariser avec le prototypage",
       category: 'web',
-      image: 'NextGen/4.png',
+      image: 'NextGen/4.webp',
       technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
       featured: true,
       figma: 'https://www.figma.com/proto/Dud3EhOiK2vT00HF5B7qNS/Untitled?node-id=45-939&t=Yed49kabdS1fRalB-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
       external: 'https://app-mobile-fitness.com',
       gallery: [
-        'NextGen/1.png',
-        'NextGen/2.png',
-        'NextGen/3.png',
-        'NextGen/4.png',
-        'NextGen/5.png'
+        'NextGen/1.webp',
+        'NextGen/2.webp',
+        'NextGen/3.webp',
+        'NextGen/4.webp',
+        'NextGen/5.webp'
       ]
     },
     {
@@ -80,12 +80,12 @@ const Portfolio = () => {
       title: 'Portfolio\'s Feller',
       description: 'Maquette figma du portfolio d\'un expert en cybersécurité',
       category: 'web',
-      image: 'Feller/portfolio.png',
+      image: 'Feller/portfolio.webp',
       technologies: ['Figma', 'Illustrator', 'Photoshop', 'Branding'],
       featured: false,
       figma: 'https://www.figma.com/proto/g9GDjXwHXcm5GZ2OgAkvLY/Portfolio-Feller?node-id=10-2&t=KY4dffIM1YGICvuh-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
       gallery: [
-        'Feller/portfolio.png'
+        'Feller/portfolio.webp'
       ]
     },
     {
@@ -93,12 +93,12 @@ const Portfolio = () => {
       title: 'Astro',
       description: 'Site web pour une startup de developpement web',
       category: 'web',
-      image: 'Astro/home.png',
+      image: 'Astro/home.webp',
       technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
       featured: false,
       figma: 'https://www.figma.com/proto/Dud3EhOiK2vT00HF5B7qNS/Untitled?node-id=10-497&t=Yed49kabdS1fRalB-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1',
       gallery: [
-        'Astro/home.png'
+        'Astro/home.webp'
       ]
     },
     {
@@ -106,14 +106,14 @@ const Portfolio = () => {
       title: 'Zitawi',
       description: 'J\'ai réaliser une refonte total du menu du FastFood Zitawi pour rendre leur menu plus gourmand',
       category: 'affiche',
-      image: 'File/1.jpg',
+      image: 'File/1.webp',
       technologies: ['Figma', 'Canva', 'Pinterest'],
       featured: false,
       gallery: [
-        'File/1.jpg',
-        'File/2.jpg',
-        'File/3.jpg',
-        'File/4.jpg'
+        'File/1.webp',
+        'File/2.webp',
+        'File/3.webp',
+        'File/4.webp'
       ]
     },
     {
@@ -121,15 +121,15 @@ const Portfolio = () => {
       title: 'Future Studio',
       description: 'J\'ai réaliser des logos engagants pour le Future Studio leader de l\'innovation autour de la tech au Bénin',
       category: 'affiche',
-      image: 'File/1.png',
+      image: 'File/1.webp',
       technologies: ['Figma', 'Colors', 'Canva', 'Branding'],
       featured: false,
       gallery: [
-        'File/1.png',
-        'File/2.png',
-        'File/3.png',
-        'File/4.png',
-        'File/5.png'
+        'File/1_.webp',
+        'File/2_.webp',
+        'File/3_.webp',
+        'File/4_.webp',
+        'File/5_.webp'
       ]
     },
     {
@@ -137,22 +137,22 @@ const Portfolio = () => {
       title: 'Snaki',
       description: 'Affiche de présentation des bubbles tea de la marque snaki',
       category: 'affiche',
-      image: 'File/bubble.jpeg',
+      image: 'File/bubble.webp',
       technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
       featured: false,
       gallery: [
-        'File/bubble.jpeg',
-        'Snaki/1.png',
-        'Snaki/2.png',
-        'Snaki/3.png',
-        'Snaki/4.png',
-        'Snaki/5.png',
-        'Snaki/6.png',
-        'Snaki/7.png',
-        'Snaki/8.png',
-        'Snaki/9.png',
-        'Snaki/10.png',
-        'Snaki/11.png'
+        'File/bubble.webp',
+        'Snaki/1.webp',
+        'Snaki/2.webp',
+        'Snaki/3.webp',
+        'Snaki/4.webp',
+        'Snaki/5.webp',
+        'Snaki/6.webp',
+        'Snaki/7.webp',
+        'Snaki/8.webp',
+        'Snaki/9.webp',
+        'Snaki/10.webp',
+        'Snaki/11.webp'
       ]
     },
     {
@@ -160,11 +160,11 @@ const Portfolio = () => {
       title: 'Netflix',
       description: 'J\'ai réaliser pour une entreprise de vente en ligne Lumora une affiche pour promouvoir son service de vente d\'abonnement Netflix',
       category: 'affiche',
-      image: '/File/netflix.png',
+      image: '/File/netflix.webp',
       technologies: ['Figma', 'Canva', 'Pinterest', 'Youtube pour la documentation'],
       featured: false,
       gallery: [
-        '/File/netflix.png'
+        '/File/netflix.webp'
       ]
     }
   ];
@@ -208,7 +208,7 @@ const Portfolio = () => {
         try {
           const response = await fetch(url);
           const blob = await response.blob();
-          const ext = blob.type.split('/')[1] || 'jpg';
+          const ext = blob.type.split('/')[1] || 'webp';
           folder.file(`image_${idx + 1}.${ext}`, blob);
         } catch (e) {
           // Ignore l'image si erreur
