@@ -129,9 +129,10 @@ const About = () => {
             <div className="relative w-full max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-bleu/20 to-[#ff767a]/20 rounded-3xl transform rotate-3" />
               <img
-                src="/File/Spynel.jpeg"
+                src="/File/Spynel.webp"
                 alt="Spynel KOUTON"
                 className="relative w-full h-auto rounded-3xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500"
+                loading="lazy"
               />
             </div>
           </motion.div>

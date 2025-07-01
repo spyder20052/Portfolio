@@ -236,6 +236,7 @@ const Portfolio = () => {
                     className={`max-h-full w-auto rounded-xl shadow transition-transform duration-300 cursor-zoom-in ${zoomed ? 'scale-150 cursor-zoom-out z-10' : ''}`}
                     style={{ objectFit: 'cover', objectPosition: 'top', transition: 'transform 0.3s' }}
                     onClick={handleImageClick}
+                    loading="lazy"
                   />
                 </div>
                 <div className="flex items-center justify-center gap-4 mb-2">
@@ -406,6 +407,7 @@ const Portfolio = () => {
                   className="w-full h-48 sm:h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   alt={project.title}
                   src={project.image}
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-bleu/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
