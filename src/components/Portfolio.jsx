@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Eye, Github, ExternalLink, Figma } from 'lucide-react';
 import { motion } from 'framer-motion';
 import JSZip from 'jszip';
@@ -10,6 +10,11 @@ const Portfolio = () => {
   const [galleryImages, setGalleryImages] = useState([]);
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [zoomed, setZoomed] = useState(false);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+  const [detailProject, setDetailProject] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [filterAnim, setFilterAnim] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState({});
 
   const categories = [
     { id: 'all', name: 'Tous' },
@@ -220,6 +225,41 @@ const Portfolio = () => {
     });
   };
 
+  const handleOpenDetail = (project) => {
+    setDetailProject(project);
+    setDetailModalOpen(true);
+  };
+
+  const handleCloseDetail = () => {
+    setDetailModalOpen(false);
+    setDetailProject(null);
+  };
+
+  const handleCategoryChange = (id) => {
+    setFilterAnim(true);
+    setSelectedCategory(id);
+    setTimeout(() => setFilterAnim(false), 350);
+  };
+
+  const handleVoirPlus = () => {
+    setVisibleCount((prev) => prev + 6);
+  };
+
+  const handleImgLoad = (src) => {
+    setImgLoaded((prev) => ({ ...prev, [src]: true }));
+  };
+
+  useEffect(() => {
+    if (!galleryOpen) return;
+    const handleKey = (e) => {
+      if (e.key === 'ArrowLeft') handlePrevImage();
+      if (e.key === 'ArrowRight') handleNextImage();
+      if (e.key === 'Escape') handleCloseGallery();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [galleryOpen, galleryImages]);
+
   return (
     <section id="portfolio" className="py-12 sm:py-24 relative overflow-hidden" style={{ fontFamily: 'Montserrat, Arial, sans-serif' }}>
       {/* Modale galerie d'images */}
@@ -245,6 +285,31 @@ const Portfolio = () => {
                   <button onClick={handleNextImage} className="bg-sand text-dark rounded-full p-2 hover:bg-bleu hover:text-white transition-all">▶</button>
                 </div>
               </>
+            )}
+          </div>
+        </div>
+      )}
+      {/* Modale de détails projet */}
+      {detailModalOpen && detailProject && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70">
+          <div className="relative bg-white rounded-2xl shadow-lg max-w-2xl w-full p-6 flex flex-col items-center animate-fade-in">
+            <button onClick={handleCloseDetail} className="absolute top-2 right-2 text-dark bg-sand rounded-full p-2 hover:bg-bleu hover:text-white transition-all" aria-label="Fermer la modale">✕</button>
+            <h2 className="text-xl font-bold mb-2 text-bleu">{detailProject.title}</h2>
+            <img src={detailProject.image} alt={detailProject.title} className="w-full max-h-60 object-cover rounded-xl mb-4" />
+            <p className="text-dark/80 mb-2">{detailProject.description}</p>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {detailProject.technologies.map((tech, i) => (
+                <span key={i} className="px-3 py-1 bg-sand text-dark/80 rounded-full text-xs border border-sand">{tech}</span>
+              ))}
+            </div>
+            {detailProject.figma && <a href={detailProject.figma} target="_blank" rel="noopener noreferrer" className="text-bleu underline mb-2">Voir sur Figma</a>}
+            {detailProject.github && <a href={detailProject.github} target="_blank" rel="noopener noreferrer" className="text-bleu underline mb-2 ml-2">Voir le site</a>}
+            {detailProject.gallery && detailProject.gallery.length > 1 && (
+              <div className="flex gap-2 mt-2 flex-wrap justify-center">
+                {detailProject.gallery.map((img, idx) => (
+                  <img key={idx} src={img} alt="Aperçu" className="w-16 h-16 object-cover rounded cursor-pointer border border-sand hover:border-bleu" onClick={() => { setGalleryImages(detailProject.gallery); setGalleryIndex(idx); setGalleryOpen(true); setDetailModalOpen(false); }} />
+                ))}
+              </div>
             )}
           </div>
         </div>
@@ -373,7 +438,7 @@ const Portfolio = () => {
           {categories.map((category) => (
             <button
               key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
+              onClick={() => handleCategoryChange(category.id)}
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-200 border border-sand shadow-sm focus:outline-none text-sm sm:text-base ${
                 selectedCategory === category.id
                   ? 'bg-bleu text-white'
@@ -387,59 +452,74 @@ const Portfolio = () => {
         </motion.div>
         {/* Projects Grid */}
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 relative ${filterAnim ? 'opacity-0 translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'}`}
+          initial={false}
+          animate={{ opacity: filterAnim ? 0 : 1, y: filterAnim ? 20 : 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           viewport={{ once: false }}
         >
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.length === 0 && (
+            <div className="col-span-full text-center py-12 text-dark/60 animate-fade-in">Aucun projet trouvé dans cette catégorie.</div>
+          )}
+          {filteredProjects.slice(0, visibleCount).map((project, index) => (
             <motion.div
               key={project.id}
-              className="bg-white rounded-2xl sm:rounded-3xl shadow-md hover:shadow-lg transition-all overflow-hidden flex flex-col"
+              className="bg-white rounded-2xl sm:rounded-3xl shadow-md hover:shadow-2xl transition-all overflow-hidden flex flex-col group focus-within:ring-2 focus-within:ring-bleu"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               viewport={{ once: false }}
+              tabIndex={0}
+              aria-label={`Voir les détails du projet ${project.title}`}
+              onClick={(e) => { if (e.target.tagName !== 'BUTTON') handleOpenDetail(project); }}
+              onKeyDown={(e) => { if (e.key === 'Enter') handleOpenDetail(project); }}
+              style={{ cursor: 'pointer' }}
             >
               <div className="relative overflow-hidden group">
+                {/* Skeleton loader */}
+                {!imgLoaded[project.image] && <div className="absolute inset-0 bg-sand animate-pulse z-10" />}
                 <img
-                  className="w-full h-48 sm:h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className={`w-full h-48 sm:h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105 group-hover:shadow-xl ${imgLoaded[project.image] ? 'opacity-100' : 'opacity-0'}`}
                   alt={project.title}
                   src={project.image}
                   loading="lazy"
+                  onLoad={() => handleImgLoad(project.image)}
                 />
-                <div className="absolute inset-0 bg-bleu/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-bleu/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button
-                    className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
-                    aria-label="Voir le projet"
-                    onClick={() => handleOpenGallery(project)}
+                    className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200 ripple"
+                    aria-label="Voir la galerie"
+                    tabIndex={0}
+                    onClick={(e) => { e.stopPropagation(); handleOpenGallery(project); }}
                   >
                     <Eye size={16} className="sm:w-5 sm:h-5" />
                   </button>
                   {['web', 'mobile'].includes(project.category) && project.github && (
                     <button
-                      className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
+                      className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200 ripple"
                       aria-label="Voir le code sur GitHub"
-                      onClick={() => window.open(project.github, '_blank')}
+                      tabIndex={0}
+                      onClick={(e) => { e.stopPropagation(); window.open(project.github, '_blank'); }}
                     >
                       <Github size={16} className="sm:w-5 sm:h-5" />
                     </button>
                   )}
                   {project.category === 'web' && project.figma && (
                     <button
-                      className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
+                      className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200 ripple"
                       aria-label="Voir le projet sur Figma"
-                      onClick={() => window.open(project.figma, '_blank')}
+                      tabIndex={0}
+                      onClick={(e) => { e.stopPropagation(); window.open(project.figma, '_blank'); }}
                     >
                       <Figma size={16} className="sm:w-5 sm:h-5" />
                     </button>
                   )}
                   <button
-                    className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200"
+                    className="p-1.5 sm:p-2 bg-bleu text-white rounded-full shadow hover:bg-[#ff767a] transition-colors duration-200 ripple"
                     aria-label="Télécharger la galerie"
-                    onClick={() => handleDownloadGallery(project)}
+                    tabIndex={0}
+                    onClick={(e) => { e.stopPropagation(); handleDownloadGallery(project); }}
                   >
                     <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                   </button>
@@ -463,8 +543,9 @@ const Portfolio = () => {
                   ))}
                 </div>
                 <button
-                  className="mt-auto bg-bleu hover:bg-[#ff767a] text-white font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow transition-all duration-200 text-sm sm:text-base"
-                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="mt-auto bg-bleu hover:bg-[#ff767a] text-white font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow transition-all duration-200 text-sm sm:text-base ripple"
+                  tabIndex={0}
+                  onClick={(e) => { e.stopPropagation(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
                 >
                   Me contacter
                 </button>
@@ -472,6 +553,12 @@ const Portfolio = () => {
             </motion.div>
           ))}
         </motion.div>
+        {/* Bouton Voir plus */}
+        {filteredProjects.length > visibleCount && (
+          <div className="flex justify-center mt-8">
+            <button className="bg-bleu hover:bg-[#ff767a] text-white font-bold px-6 py-3 rounded-full shadow transition-all duration-200 text-base ripple" onClick={handleVoirPlus} tabIndex={0} aria-label="Voir plus de projets">Voir plus</button>
+          </div>
+        )}
       </div>
     </section>
   );
